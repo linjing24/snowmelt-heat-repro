@@ -4,10 +4,13 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
+from pathlib import Path
 
 # ================= 1. 配置参数 =================
-INPUT_DIR = r"D:\BNU-Artical2\数据处理过程\41.PSI指数计算结果"
-OUTPUT_PNG = r"D:\BNU-Artical2\图6-结果图\Figure_5yr_Boxplot_PSI_DecadeBG_Final.png"
+ROOT = Path(__file__).resolve().parents[1]  # 项目根目录（code/ 的上一层）
+
+INPUT_DIR = str(ROOT / "data" / "41.PSI指数计算结果")
+OUTPUT_PNG = str(ROOT / "results" / "Figure_5yr_Boxplot_PSI_DecadeBG_Final.png")
 os.makedirs(os.path.dirname(OUTPUT_PNG), exist_ok=True)
 
 BOX_WIDTH = 0.25
@@ -196,3 +199,4 @@ fig.savefig(OUTPUT_PNG, dpi=300, bbox_inches='tight')
 plt.show()
 
 print(f"✅ PSI绘图完成（5年分组 + 极浅十年背景 + 十年分隔 + 离群点散点 + 窄箱体 + 短帽子）。\n保存至: {OUTPUT_PNG}")
+

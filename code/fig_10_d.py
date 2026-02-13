@@ -5,11 +5,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.tree import DecisionTreeRegressor
 from scipy.interpolate import make_interp_spline
+from pathlib import Path
 
 # ================= 1. 配置路径 (Tmax 版) =================
-melt_folder = r"D:\BNU-Artical2\数据处理过程\35-1. 融雪极值-划分3大子区"
-heat_folder = r"D:\BNU-Artical2\数据处理过程\36-1.高温极值-划分3大子区"
-output_folder = r"D:\BNU-Artical2\数据处理过程\非线性\子区域_全时段-相关拟合_txx-Advanced"
+ROOT = Path(__file__).resolve().parents[1]  # 项目根目录（code/ 的上一层）
+
+melt_folder = str(ROOT / "data" / "35-1. 融雪极值-划分3大子区")
+heat_folder = str(ROOT / "data" / "36-1.高温极值-划分3大子区")
+output_folder = str(ROOT / "results" / "非线性" / "子区域_全时段-相关拟合_txx-Advanced")
 os.makedirs(output_folder, exist_ok=True)
 
 # ================= 2. 数据读取与合并 =================
@@ -115,3 +118,4 @@ save_path = os.path.join(output_folder, "Clean_LinePlot_Txx_Global.png")
 plt.savefig(save_path)
 print(f"✅ 图片已保存: {save_path}")
 plt.show()
+

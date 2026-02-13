@@ -6,10 +6,13 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import r2_score, mean_absolute_error
 from sklearn.ensemble import RandomForestRegressor
 import shap
+from pathlib import Path
 
 # ========= 路径 =========
-DATA_DIR = r"D:\BNU-Artical2\数据处理过程\47.结果3.4变量汇总（最终版）-标准化"
-OUT_DIR  = r"D:\BNU-Artical2\结果图_SHAP_yearscale_70_30_RF"
+ROOT = Path(__file__).resolve().parents[1]  # 项目根目录（code/ 的上一层）
+
+DATA_DIR = str(ROOT / "data" / "47.结果3.4变量汇总（最终版）-标准化")
+OUT_DIR  = str(ROOT / "results" / "结果图_SHAP_yearscale_70_30_RF")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # 统一字体
@@ -270,3 +273,4 @@ if __name__ == "__main__":
         index=False, encoding="utf-8-sig"
     )
     print(f"\n完成：图件和 metrics 已保存到 {OUT_DIR}")
+

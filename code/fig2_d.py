@@ -381,9 +381,14 @@ def plot_four_vars_from_folder(folder,
     plt.show()
 
 def main():
-    # —— 华北地区文件夹 ——
+    # —— 你的西北地区文件夹 ——
     ROOT = Path(__file__).resolve().parents[1]
-df = pd.read_csv(ROOT / "data" / "derived" / "threshold_input.csv")
+    
+    # ===========================
+    
+    folder = str(ROOT / "data" / "气象-年尺度-站点（7.9）" / "华北地区")   # <<< 改成读取的“包含多个站点文件”的文件夹
+    output_dir = str(ROOT / "results" / "3.1-华北地区")          # <<< 输出目录
+
 
     # 四个面板的定义：列名、标题、颜色、单位、上限比例、y主刻度步长
     var_defs = [
@@ -398,9 +403,10 @@ df = pd.read_csv(ROOT / "data" / "derived" / "threshold_input.csv")
         var_defs=var_defs,
         breakpoint=2000,              # 分段：1980–1999 & 2000–2019
         x_min=1980, x_max=2019,
-        y_mins=(200, 300, 0, 8),      # 按你提供的配置
+        y_mins=(100, 100, 15, 5),     # 按你提供的配置
         output_dir=r"C:\Users\A\Desktop\3.1-华北地区"
     )
+
 
 if __name__ == "__main__":
     main()

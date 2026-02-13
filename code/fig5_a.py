@@ -3,20 +3,26 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import linregress
+from pathlib import Path
 
 # ========== 1. 配置区 ==========
+# ✅ 按你 GitHub 仓库结构（见截图：snowmelt-heat-repro/data/...）做“相对路径”，只要仓库位置变了也能跑
+ROOT = Path(__file__).resolve().parents[1]  # 项目根目录（code/ 的上一层）
+
 files = {
-    'Northern China': r"D:\BNU-Artical2\数据处理过程\31. 冬季降雪-春季气温（SPI）\SDI.csv",
-    'Northeast': r"D:\BNU-Artical2\数据处理过程\31. 冬季降雪-春季气温（SPI）\SDI指数-东北数据.csv",
-    'North China': r"D:\BNU-Artical2\数据处理过程\31. 冬季降雪-春季气温（SPI）\SDI指数-华北数据.csv",
-    'Northwest': r"D:\BNU-Artical2\数据处理过程\31. 冬季降雪-春季气温（SPI）\SDI指数-西北数据.csv",
+    'Northern China': str(ROOT / "data" / "31. 冬季降雪-春季气温（SPI）" / "SDI.csv"),
+    'Northeast':      str(ROOT / "data" / "31. 冬季降雪-春季气温（SPI）" / "SDI指数-东北数据.csv"),
+    'North China':    str(ROOT / "data" / "31. 冬季降雪-春季气温（SPI）" / "SDI指数-华北数据.csv"),
+    'Northwest':      str(ROOT / "data" / "31. 冬季降雪-春季气温（SPI）" / "SDI指数-西北数据.csv"),
 }
+
 region_colors = {
     'Northern China': '#8FAADC',
     'Northeast': '#B0D597',
     'North China': '#FFE389',
     'Northwest': '#FFA3A3',
 }
+
 # 定义不同区域的拐点符号 (Markers)
 # o: 圆点, s: 正方形, ^: 上三角, D: 菱形
 region_markers = {
@@ -26,7 +32,7 @@ region_markers = {
     'Northwest': 'D',
 }
 
-out_png = r"D:\BNU-Artical2\图5-结果图\Sdi_Combined_LineChart-V2.png"
+out_png = str(ROOT / "results" / "Sdi_Combined_LineChart-V2.png")
 os.makedirs(os.path.dirname(out_png), exist_ok=True)
 
 # ========== 2. 读取并聚合 (保持不变) ==========
@@ -175,3 +181,4 @@ plt.tight_layout()
 fig.savefig(out_png, dpi=300, bbox_inches='tight')
 plt.close(fig)
 print(f"✅ PSI 合并绘图完成！图片保存至: {out_png}")
+

@@ -5,12 +5,16 @@ import matplotlib.pyplot as plt
 from scipy.stats import linregress
 
 # ========== 1. 配置区 ==========
+# ✅ 按你 GitHub 仓库结构（见截图：snowmelt-heat-repro/data/...）做“相对路径”，只要仓库位置变了也能跑
+ROOT = Path(__file__).resolve().parents[1]  # 项目根目录（code/ 的上一层）
+
 files = {
-    'Northern China': r"D:\BNU-Artical2\数据处理过程\31. 冬季降雪-春季气温（SPI）\PSI.csv",
-    'Northeast': r"D:\BNU-Artical2\数据处理过程\31. 冬季降雪-春季气温（SPI）\PSI_东北地区.csv",
-    'North China': r"D:\BNU-Artical2\数据处理过程\31. 冬季降雪-春季气温（SPI）\PSI_华北地区.csv",
-    'Northwest': r"D:\BNU-Artical2\数据处理过程\31. 冬季降雪-春季气温（SPI）\PSI_西北地区.csv",
+    'Northern China': str(ROOT / "data" / "31. 冬季降雪-春季气温（SPI）" / "PSI.csv"),
+    'Northeast':      str(ROOT / "data" / "31. 冬季降雪-春季气温（SPI）" / "PSI指数-东北数据.csv"),
+    'North China':    str(ROOT / "data" / "31. 冬季降雪-春季气温（SPI）" / "PSI指数-华北数据.csv"),
+    'Northwest':      str(ROOT / "data" / "31. 冬季降雪-春季气温（SPI）" / "PSI指数-西北数据.csv"),
 }
+
 # 自定义颜色
 region_colors = {
     'Northern China': '#8FAADC',
