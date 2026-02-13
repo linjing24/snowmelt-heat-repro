@@ -383,7 +383,8 @@ def plot_four_vars_from_folder(folder,
 def main():
     # —— 西北地区文件夹 ——
     ROOT = Path(__file__).resolve().parents[1]
-df = pd.read_csv(ROOT / "data" / "derived" / "threshold_input.csv")
+
+    folder = str(ROOT / "data" / "你的西北地区文件夹名")   # <<< 这里改成真实的文件夹名字
 
     # 四个面板的定义：列名、标题、颜色、单位、上限比例、y主刻度步长
     var_defs = [
@@ -401,6 +402,7 @@ df = pd.read_csv(ROOT / "data" / "derived" / "threshold_input.csv")
         y_mins=(100, 100, 15, 5),     # 按你提供的配置
         output_dir=r"C:\Users\A\Desktop\3.1-西北地区"
     )
+
 
 if __name__ == "__main__":
     main()
