@@ -381,10 +381,14 @@ def plot_four_vars_from_folder(folder,
     plt.show()
 
 def main():
-    # —— 西北地区文件夹 ——
+    # —— 你的西北地区文件夹 ——
     ROOT = Path(__file__).resolve().parents[1]
+    
+    # ===========================
+    
+    folder = str(ROOT / "data" / "气象-年尺度-站点（7.9）" / "西北地区")   # <<< 改成读取的“包含多个站点文件”的文件夹
+    output_dir = str(ROOT / "results" / "3.1-西北地区")          # <<< 输出目录
 
-    folder = str(ROOT / "data" / "你的西北地区文件夹名")   # <<< 这里改成真实的文件夹名字
 
     # 四个面板的定义：列名、标题、颜色、单位、上限比例、y主刻度步长
     var_defs = [
