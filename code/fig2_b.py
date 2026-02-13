@@ -388,12 +388,6 @@ def main():
     
     folder = str(ROOT / "data" / "气象-年尺度-站点（7.9）" / "东北地区")   # <<< 改成读取的“包含多个站点文件”的文件夹
     output_dir = str(ROOT / "results" / "3.1-东北地区")          # <<< 输出目录
-    # 如果你确实有这个文件，就会读；没有也不会影响绘图（因为你后面没有用 df）
-    threshold_path = ROOT / "data" / "derived" / "threshold_input.csv"
-    if threshold_path.exists():
-        df = pd.read_csv(threshold_path)
-    else:
-        print(f"[INFO] threshold_input.csv not found, skipped: {threshold_path}")
 
     # 四个面板的定义：列名、标题、颜色、单位、上限比例、y主刻度步长
     var_defs = [
